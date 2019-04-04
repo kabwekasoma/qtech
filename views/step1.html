@@ -1,0 +1,18 @@
+<div class="row">
+      <div class="four columns">
+        <label for="step-one">Step 1</label>
+        <img id="step-one" src="images/Step-1.png">
+      </div>
+    </div>
+
+    <form>
+      <div class="row">
+        <div class="six columns">
+          <label for="quoteFor"> I would like quotes for:</label>
+          <select class="u-full-width" id="quoteFor" ng-model="service" ng-options="service.name for service in services">
+            <option value="">Select Service</option>
+          </select>
+        </div>
+      </div>
+      <input class="button-primary" type="submit" value="Next" ng-click="goStep2()">
+    </form>

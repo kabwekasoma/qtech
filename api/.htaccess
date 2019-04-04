@@ -1,0 +1,28 @@
+<Files ".ht*">
+deny from all
+</Files>
+
+Options -Multiviews
+Options +FollowSymlinks
+Options -Indexes 
+RewriteEngine on
+
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond %{REQUEST_FILENAME} !-s
+	RewriteRule (.*)$ index.php?request=$1 [QSA,NC,L]
+
+	RewriteCond %{REQUEST_FILENAME} -d
+	RewriteRule (.*)$ index.php?request=$1 [QSA,NC,L]
+
+	RewriteCond %{REQUEST_FILENAME} -s
+	RewriteRule (.*)$ index.php?request=$1 [QSA,NC,L]
+
+	#php_flag display_errors on
+	#php_value error_reporting 2039
+</IfModule>
+
+#forbidding access to the includes directory
+RedirectMatch 404 "includes"

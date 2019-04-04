@@ -1,0 +1,734 @@
+<!doctype html>
+<html ng-app="quoteApp"  lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuotationTech</title>
+
+    <!-- Disable tap highlight on IE -->
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <!-- Web Application Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Web Starter Kit">
+    <link rel="icon" sizes="192x192" href="images/touch/chrome-touch-icon-192x192.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Web Starter Kit">
+    <link rel="apple-touch-icon" href="images/touch/apple-touch-icon.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#2F3BA2">
+
+    <!-- Color the status bar on mobile devices -->
+    <meta name="theme-color" content="#2F3BA2">
+
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/">
+    -->
+
+    <link rel="stylesheet" href="mdl/material.min.css">
+
+    <!-- Material Design icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    <script src="assets/js/angular.min.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="scripts/main-controller.js"></script>
+    <!-- Your styles -->
+    <link rel="stylesheet" href="styles/main.css">
+  </head>
+  <body ng-controller="quoterequest" class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+<!--
+      Header & Navigation Section
+      *************************** -->
+      <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
+        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+        </div>
+        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+          <a href="index.html"><img class="logo" src="images/quotationtech_logo.svg" alt="" /></a>
+          <h1 class="heading-margin">Compare Insurance Quotes</h1>
+        </div>
+        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+        </div>
+        <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
+        <a style="margin-top: 10px; margin-left: 30px;" href="company/index.html" target="_blank" id="company-dashboard" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast" data-upgraded=",MaterialButton,MaterialRipple">Company log in<span class="mdl-button__ripple-container"><span class="mdl-ripple is-animating" style="width: 255.952px; height: 255.952px; transform: translate(-50%, -50%) translate(62px, 18px);"></span></span></a>
+          <ul class="nav no-margin-left">
+            <li class="drop">Insurance
+              <ul>
+                <li><a href="#insurance-motor" class="mdl-layout__tab dropdown-button"> <img class="small-icon" src="images/noun_38672_cc-white.png"> Motor</a></li>
+                <li><a href="#insurance-property" class="mdl-layout__tab dropdown-button"> <img class="small-icon" src="images/noun_25340_cc-white.png"> Property</a></li>
+              </ul>
+            </li>
+            <li class="drop">Finance
+              <ul>
+                <li><a href="#finance-personal" class="mdl-layout__tab dropdown-button"> <img class="small-icon" src="images/noun_70637_cc-white.png"> Personal loans</a></li>
+                <li><a href="#finance-vehicle" class="mdl-layout__tab dropdown-button"> <img class="small-icon" src="images/noun_38672_cc-white.png"> Vehicle Refinancing</a></li>
+                <li><a href="#" class="mdl-layout__tab dropdown-button"> Vehicle Service Plan</a></li>
+                <li><a href="#" class="mdl-layout__tab dropdown-button"> Rim Financing</a></li>
+              </ul>
+            </li>
+            <li class="drop">Medical
+              <ul>
+                <li><a href="#" class="mdl-layout__tab dropdown-button"> <img class="small-icon" src="images/noun_49846_cc-white.png"> Life Insurance</a></li>
+                <li><a href="#" class="mdl-layout__tab dropdown-button"> <img class="mid-icon" src="images/noun_188213_cc-white.png"> Medical Aid</a></li>
+              </ul>
+            </li>
+            <li class="drop">Travel
+              <ul>
+                <li><a href="#" class="mdl-layout__tab dropdown-button"> <img class="small-icon" src="images/noun_78157_cc-white.png"> Travel Insurance</a></li>
+                <li><a href="#flights" class="mdl-layout__tab dropdown-button"> <img class="small-icon" src="images/noun_365-white.png"> Flights</a></li>
+                <li><a href="#car-rental" class="mdl-layout__tab dropdown-button"> <img class="small-icon" src="images/noun_38672_cc-white.png"> Car Rental</a></li>
+                <li><a href="#" class="mdl-layout__tab dropdown-button"> Hotel Booking</a></li>
+              </ul>
+            </li>
+            <li class="drop">Business
+              <ul>
+                <li><a href="#" class="mdl-layout__tab dropdown-button"> <img class="small-icon" src="images/noun_105999_cc-white.png"> Business Insurance</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </header>
+
+      <main class="mdl-layout__content">
+        <!--
+        Overiew Tab
+        *********** -->
+        <div class="mdl-layout__tab-panel is-active" id="overview">
+          <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+            <div class="mdl-card mdl-cell mdl-cell--12-col">
+              <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
+                <h4 class="mdl-cell mdl-cell--12-col">What services can you compare?</h4>
+                <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+                  <div class="section__circle-container__circle mdl-color--primary"><img class="overview-icon" src="images/noun_70637_cc-white.png"></div>
+                </div>
+                <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+                  <h5>Loans</h5>
+                  We offer competitive rates for our customers, save you time and hassle. Our Quotations systems offers independent and unbiased results to suit our customers. <a href="#loans">proident minim</a>.
+                </div>
+                <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+                  <div class="section__circle-container__circle mdl-color--primary"><img class="overview-icon" src="images/noun_49846_cc-white.png"></div>
+                </div>
+                <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+                  <h5>Insurance</h5>
+                  Our online insurance quotation system will instantly compare quotas from a range of different insurance brands in Zambia. Our customers are will enjoy low prices and benefits to make it easy for you to make a decision on the right quota that fits your needs. <a href="#insurance">proident minim</a>.
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Partners -->
+          <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+            <div class="mdl-card mdl-cell mdl-cell--12-col">
+              <div class="mdl-card__supporting-text">
+                <h4>Who do we get prices from?</h4>
+                Dolore ex deserunt aute fugiat aute nulla ea sunt aliqua nisi cupidatat eu. Nostrud in laboris labore nisi amet do dolor eu fugiat consectetur elit cillum esse. Pariatur occaecat nisi laboris tempor laboris eiusmod qui id Lorem esse commodo in. Exercitation aute dolore deserunt culpa consequat elit labore incididunt elit anim.
+              </div>
+              <div class="mdl-card__actions">
+                <a href="#" class="mdl-button">View all our parnters</a>
+              </div>
+            </div>
+          </section>
+
+          <!-- Advertisements -->
+          <section class="section--footer mdl-color--white mdl-grid">
+            <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+              <div class="section__circle-container__circle mdl-color--accent section__circle--big"></div>
+            </div>
+            <div class="section__text mdl-cell mdl-cell--4-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+              <h5>Advertisement</h5>
+              Qui sint ut et qui nisi cupidatat. Reprehenderit nostrud proident officia exercitation anim et pariatur ex.
+            </div>
+            <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+              <div class="section__circle-container__circle mdl-color--accent section__circle--big"></div>
+            </div>
+            <div class="section__text mdl-cell mdl-cell--4-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+              <h5>Advertisement</h5>
+              Qui sint ut et qui nisi cupidatat. Reprehenderit nostrud proident officia exercitation anim et pariatur ex.
+            </div>
+          </section>
+        </div>
+<!--
+        Personal Loan Tab
+        ***************** -->
+        <div class="mdl-layout__tab-panel" id="finance-personal">
+          <section class="section--center mdl-grid mdl-grid--no-spacing">
+            <form action="#">
+
+              <h4> <img class="mid-icon" src="images/noun_70637_cc.png"> Get Personal Loan quotes</h4>
+              <br>
+              <div class="mdl-textfield mdl-js-textfield">
+                <textarea class="mdl-textfield__input" type="text" rows= "3" id="sample5" ></textarea>
+                <label class="mdl-textfield__label" for="sample5">What will you use the loan for...</label>
+              </div>
+              <br>
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4">
+                <label class="mdl-textfield__label" for="sample4">How much would you like to borrow (ZMW)...</label>
+                <span class="mdl-textfield__error">Input is not a number!</span>
+              </div>
+              <br>
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="sample3">
+                <label class="mdl-textfield__label" for="sample3">How long do you want to borrow it for...</label>
+              </div>
+
+              <h5>About You</h5>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                  <input class="mdl-textfield__input" type="text" id="sample3">
+                  <label class="mdl-textfield__label" for="sample3">Fullname...</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                  <input class="mdl-textfield__input" type="text" id="sample3">
+                  <label class="mdl-textfield__label" for="sample3">Email address...</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                  <input class="mdl-textfield__input" type="text" id="sample3">
+                  <label class="mdl-textfield__label" for="sample3">ID number...</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                  <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4">
+                  <label class="mdl-textfield__label" for="sample4">Mobile number...</label>
+                  <span class="mdl-textfield__error">Input is not a number!</span>
+                </div>
+
+              <h5 id="loan-tab">About Your Affordability</h5>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                  <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4">
+                  <label class="mdl-textfield__label" for="sample4">Gross Monthly Income (Total)</label>
+                  <span class="mdl-textfield__error">Input is not a number!</span>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                  <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4">
+                  <label class="mdl-textfield__label" for="sample4">Net Monthly Income (Take Home)</label>
+                  <span class="mdl-textfield__error">Input is not a number!</span>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                  <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4">
+                  <label class="mdl-textfield__label" for="sample4">Total Monthly Expenses</label>
+                  <span class="mdl-textfield__error">Input is not a number!</span>
+                </div>
+
+              <div class="">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent submit-margin">
+                  Submit
+                </button>
+              </div>
+            </form>
+          </section>
+        </div>
+<!--
+        Vehicle Refinance Tab
+        ********************* -->
+        <div class="mdl-layout__tab-panel" id="finance-vehicle">
+          <section class="section--center mdl-grid mdl-grid--no-spacing">
+            <form action="#">
+
+              <h4> <img class="mid-icon" src="images/noun_38672_cc.png"> Get Quotes to Refinance Your Vehicle</h4>
+              <br>
+
+              <h5>Tell Us What You Need</h5>
+                <h6>Is your vehicle a 2003 year model or newer?</h6>
+                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
+                  <input type="radio" id="option-1" class="mdl-radio__button" name="options" value="1">
+                  <span class="mdl-radio__label">Yes</span>
+                </label>
+                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-2">
+                  <input type="radio" id="option-2" class="mdl-radio__button" name="options" value="2" checked>
+                  <span class="mdl-radio__label">No</span>
+                </label>
+                <h6>Was your vehicle stolen and recovered or rebuilt?</h6>
+                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
+                  <input type="radio" id="option-1" class="mdl-radio__button" name="options2" value="1">
+                  <span class="mdl-radio__label">Yes</span>
+                </label>
+                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-2">
+                  <input type="radio" id="option-2" class="mdl-radio__button" name="options2" value="2" checked>
+                  <span class="mdl-radio__label">No</span>
+                </label>
+                <h6>Is your vehicle worth more than ZMW15,000?</h6>
+                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
+                  <input type="radio" id="option-1" class="mdl-radio__button" name="options3" value="1">
+                  <span class="mdl-radio__label">Yes</span>
+                </label>
+                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-2">
+                  <input type="radio" id="option-2" class="mdl-radio__button" name="options3" value="2" checked>
+                  <span class="mdl-radio__label">No</span>
+                </label>
+              <br><br>
+
+              <h5>About You</h5>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                  <input class="mdl-textfield__input" type="text" id="sample3">
+                  <label class="mdl-textfield__label" for="sample3">Fullname...</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                  <input class="mdl-textfield__input" type="text" id="sample3">
+                  <label class="mdl-textfield__label" for="sample3">Email address...</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                  <input class="mdl-textfield__input" type="text" id="sample3">
+                  <label class="mdl-textfield__label" for="sample3">ID number...</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                  <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4">
+                  <label class="mdl-textfield__label" for="sample4">Mobile number...</label>
+                  <span class="mdl-textfield__error">Input is not a number!</span>
+                </div>
+
+              <div class="">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent submit-margin">
+                  Submit
+                </button>
+              </div>
+            </form>
+          </section>
+        </div>
+<!--
+        Motor Insurance Tab
+        *******************
+	vehicle_year : "",
+			vehicle_make : "",
+			vehicle_model: "",
+			vehicle_description: "",
+			driver_type: "",
+			fullname: "",
+			email: "",
+			id: "",
+			mobile: "",
+            license_type: ""
+
+
+
+
+
+
+
+
+		-->
+        <div class="mdl-layout__tab-panel" id="insurance-motor">
+          <section class="section--center mdl-grid mdl-grid--no-spacing">
+            <div class="mdl-cell mdl-cell--12-col" id="motor-tab">
+
+              <h4> <img class="mid-icon" src="images/noun_38672_cc.png"> Get Motor Insurance Quotes.</h4>
+              <p>
+                Please complete the form.
+              </p>
+              <br>
+
+              <form action="#">
+                <h5>Your Vehicle</h5>
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" ng-model="request_quote.vehicle_year" id="motor-year">
+                    <label class="mdl-textfield__label" for="sample4">Year...</label>
+                    <span class="mdl-textfield__error">Input is not a number!</span>
+                  </div>
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" ng-model="request_quote.vehicle_make" id="motor-make">
+                    <label class="mdl-textfield__label" for="sample3">Make...</label>
+                  </div>
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" ng-model="request_quote.vehicle_model" id="motor-model">
+                    <label class="mdl-textfield__label" for="sample3">Model...</label>
+                  </div>
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="motor-description" ng-model="request_quote.vehicle_description">
+                    <label class="mdl-textfield__label" for="sample3">Description...</label>
+                  </div>
+                <br><br>
+
+                <h5>Driver Details</h5>
+              
+
+                  <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" ng-repeat="driver in driver_type">
+                     <input type="radio" class="mdl-radio__button" ng-model="request_quote.driver_type_selected" name="name" value="{{driver.value}}" required/>
+                             <span class="mdl-radio__label" style="padding-right:5px;">{{driver.name}}</span>
+                  </label>
+            <!--       <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-2">
+                    <input type="radio" ng-model="driver_type" class="mdl-radio__button" value="2">
+                    <span class="mdl-radio__label">Someone else</span>
+                  </label>  -->
+                  <br><br>
+                  <div class="mdl-selectfield">
+                    <label>Type of license...</label>
+                    <select  ng-model="request_quote.license_type" class="browser-default">
+                      <option value="" disabled selected>Type of license...</option>
+                      <option value="1">ZM license</option>
+                      <option value="2">International licence</option>
+                    </select>
+                  </div>
+                <br><br>
+
+                <h5>More About Your Vehicle</h5>
+                  <div class="mdl-selectfield">
+                    <label>What type of cover do you require...t</label>
+                    <select ng-model="request_quote.cover_type"  class="browser-default">
+                      <option value="" disabled selected>What type of cover do you require...</option>
+                      <option value="1">Comprehensive</option>
+                      <option value="2">Full Third Party Fire and Theft</option>
+                      <option value="3">Third Party Only</option>
+                      <option value="4">Motor Traders – Internal and External Policies</option>
+                      <option value="5">Goods in Transit</option>
+                      <option value="6">Single Inland Transit</option>
+                      <option value="7">Marine Open Cover</option>
+                      <option value="8">Marine Specific</option>
+                      <option value="9">Craft and Motorboat</option>
+                    </select>
+                  </div>
+                <br><br>
+
+                <h5>About You</h5>
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text"  ng-model="request_quote.fullname"  id="sample3">
+                    <label class="mdl-textfield__label" for="sample3">Fullname...</label>
+                  </div>
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text"  ng-model="request_quote.email"  id="sample3">
+                    <label class="mdl-textfield__label" for="sample3">Email address...</label>
+                  </div>
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text"  ng-model="request_quote.id"  id="sample3">
+                    <label class="mdl-textfield__label" for="sample3">ID number...</label>
+                  </div>
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text"  ng-model="request_quote.mobile"  pattern="-?[0-9]*(\.[0-9]+)?" id="sample4">
+                    <label class="mdl-textfield__label" for="sample4">Mobile number...</label>
+                    <span class="mdl-textfield__error">Input is not a number!</span>
+                  </div>
+                <div class="">
+                  <button ng-click="postRequest(request_quote)" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent submit-margin">
+                    Submit
+                  </button>
+                </div>
+              </form>
+            </div>
+          </section>
+        </div>
+<!-- 
+        Property Insurance Tab
+        ********************** -->
+        <div class="mdl-layout__tab-panel" id="insurance-property">
+          <section class="section--center mdl-grid mdl-grid--no-spacing">
+
+            <div class="mdl-cell mdl-cell--12-col" id="motor-tab">
+              <h4> <img class="mid-icon" src="images/noun_25340_cc.png"> Get Property Insurance Quotes.</h4>
+              <p>
+                Please complete the form.
+              </p>
+              <br>
+
+              <form action="#">
+                <h5>Tell Us About Your Property</h5>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                  <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="motor-year">
+                  <label class="mdl-textfield__label" for="sample4">Value of property contents</label>
+                  <span class="mdl-textfield__error">Input is not a number!</span>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                  <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="motor-year">
+                  <label class="mdl-textfield__label" for="sample4">When did you move in?</label>
+                  <span class="mdl-textfield__error">Input is not a number!</span>
+                </div>
+                <br><br>
+
+                <h5>Have you had a break-in at this address?</h5>
+                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
+                  <input type="radio" id="option-1" class="mdl-radio__button" name="options" value="1">
+                  <span class="mdl-radio__label">Yes</span>
+                </label>
+                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-2">
+                  <input type="radio" id="option-2" class="mdl-radio__button" name="options" value="2" checked>
+                  <span class="mdl-radio__label">No</span>
+                </label>
+                <br><br>
+
+                <div class="mdl-selectfield">
+                  <label>What type of cover do you require...t</label>
+                  <select class="browser-default">
+                    <option value="" disabled selected>What type of cover do you require...</option>
+                    <option value="1">Fire and Allied Perils</option>
+                    <option value="2">Domestic Buildings</option>
+                    <option value="3">Office Comprehensive</option>
+                    <option value="4">Fire Business Interruption</option>
+                    <option value="5">Domestic Buildings</option>
+                    <option value="6">Domestic Contents</option>
+                    <option value="7">Electronic Equipment All Risks</option>
+                    <option value="8">Contractors All Risks</option>
+                    <option value="9">Plant All Risks</option>
+                    <option value="10">Erection All Risks</option>
+                    <option value="11">Loss of Profits Following Machinery Breakdown</option>
+                    <option value="12">Boiler and Pressure Vessel</option>
+                  </select>
+                </div>
+                <br><br>
+
+                <h5>About You</h5>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                  <input class="mdl-textfield__input" type="text" id="sample3">
+                  <label class="mdl-textfield__label" for="sample3">Fullname...</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                  <input class="mdl-textfield__input" type="text" id="sample3">
+                  <label class="mdl-textfield__label" for="sample3">Email address...</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                  <input class="mdl-textfield__input" type="text" id="sample3">
+                  <label class="mdl-textfield__label" for="sample3">ID number...</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                  <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4">
+                  <label class="mdl-textfield__label" for="sample4">Mobile number...</label>
+                  <span class="mdl-textfield__error">Input is not a number!</span>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield">
+                  <textarea class="mdl-textfield__input" type="text" rows= "3" id="sample5" ></textarea>
+                  <label class="mdl-textfield__label" for="sample5">Physical Address</label>
+                </div>
+
+                <div class="">
+                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent submit-margin">
+                    Submit
+                  </button>
+                </div>
+              </form>
+            </div>
+          </section>
+        </div>
+        <!-- 
+        Car Rental Tab
+        ********************** -->
+        <div class="mdl-layout__tab-panel" id="car-rental">
+          <section class="section--center mdl-grid mdl-grid--no-spacing">
+
+            <div class="mdl-cell mdl-cell--12-col" id="motor-tab">
+              <h4> <img class="mid-icon" src="images/noun_38672_cc.png"> Car Rental.</h4>
+              <p>
+                Please complete the form.
+              </p>
+              <br>
+
+              <form action="#">
+                <h5>Company Details</h5>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                  <input class="mdl-textfield__input" type="text" id="company-name">
+                  <label class="mdl-textfield__label" for="sample3">Company name</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                  <input class="mdl-textfield__input" type="text" id="employee-name">
+                  <label class="mdl-textfield__label" for="sample3">Employee name</label>
+                </div>
+
+                <h5>Drivers Details</h5>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                  <input class="mdl-textfield__input" type="text" id="drivers-name">
+                  <label class="mdl-textfield__label" for="sample3">Drivers name</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                  <input class="mdl-textfield__input" type="text" id="drivers-license">
+                  <label class="mdl-textfield__label" for="sample3">Drivers license number</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield">
+                  <textarea class="mdl-textfield__input" type="text" rows= "3" id="physical-address" ></textarea>
+                  <label class="mdl-textfield__label" for="sample5">Physical Address</label>
+                </div>
+
+                <h5>Vehicle Details</h5>
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" ng-model="request_quote.vehicle_year" id="motor-year">
+                    <label class="mdl-textfield__label" for="sample4">Year...</label>
+                    <span class="mdl-textfield__error">Input is not a number!</span>
+                  </div>
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" ng-model="request_quote.vehicle_make" id="motor-make">
+                    <label class="mdl-textfield__label" for="sample3">Make...</label>
+                  </div>
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" ng-model="request_quote.vehicle_model" id="motor-model">
+                    <label class="mdl-textfield__label" for="sample3">Model...</label>
+                  </div>
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="motor-description" ng-model="request_quote.vehicle_description">
+                    <label class="mdl-textfield__label" for="sample3">Description...</label>
+                  </div>
+
+                <h5>Ordering Timing</h5>
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="start-date">
+                    <label class="mdl-textfield__label" for="sample4">Start date</label>
+                    <span class="mdl-textfield__error">Input is not a number!</span>
+                  </div>
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="end-date">
+                    <label class="mdl-textfield__label" for="sample4">End date</label>
+                    <span class="mdl-textfield__error">Input is not a number!</span>
+                  </div>
+
+                <h5>Price Range</h5>
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="price-for">
+                    <label class="mdl-textfield__label" for="sample4">From</label>
+                    <span class="mdl-textfield__error">Input is not a number!</span>
+                  </div>
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="price-to">
+                    <label class="mdl-textfield__label" for="sample4">To</label>
+                    <span class="mdl-textfield__error">Input is not a number!</span>
+                  </div>
+
+                <br><br>
+
+                <div class="">
+                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent submit-margin">
+                    Submit
+                  </button>
+                </div>
+              </form>
+            </div>
+          </section>
+        </div>
+
+               <!-- 
+        Flights Tab
+        ********************** -->
+        <div class="mdl-layout__tab-panel" id="flights">
+          <section class="section--center mdl-grid mdl-grid--no-spacing">
+
+            <div class="mdl-cell mdl-cell--12-col" id="motor-tab">
+              <h4> <img class="mid-icon" src="images/noun_365.png"> Domestic and International Flights.</h4>
+              <p>
+                Please complete the form.
+              </p>
+              <br>
+
+              <form action="#">
+              <h5>Travel details</h5>
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="from">
+                    <label class="mdl-textfield__label" for="sample4">From</label>
+                  </div>
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="to">
+                    <label class="mdl-textfield__label" for="sample4">To</label>
+                  </div>
+
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="start-date">
+                    <label class="mdl-textfield__label" for="sample4">Depature date</label>
+                    <span class="mdl-textfield__error">Input is not a number!</span>
+                  </div>
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="end-date">
+                    <label class="mdl-textfield__label" for="sample4">Return date</label>
+                    <span class="mdl-textfield__error">Input is not a number!</span>
+                  </div>
+
+                <h5>Flight details</h5>
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="adults">
+                    <label class="mdl-textfield__label" for="sample4">Number of adults</label>
+                    <span class="mdl-textfield__error">Input is not a number!</span>
+                  </div>
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="children">
+                    <label class="mdl-textfield__label" for="sample4">Number of children</label>
+                    <span class="mdl-textfield__error">Input is not a number!</span>
+                  </div>
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="infants">
+                    <label class="mdl-textfield__label" for="sample4">Number of infants</label>
+                    <span class="mdl-textfield__error">Input is not a number!</span>
+                  </div>
+                  <br>
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="class">
+                    <label class="mdl-textfield__label" for="sample4">Class</label>
+                  </div>
+
+                  <h5>Price Range</h5>
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="price-for">
+                    <label class="mdl-textfield__label" for="sample4">From</label>
+                    <span class="mdl-textfield__error">Input is not a number!</span>
+                  </div>
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="price-to">
+                    <label class="mdl-textfield__label" for="sample4">To</label>
+                    <span class="mdl-textfield__error">Input is not a number!</span>
+                  </div>
+
+                <br><br>
+
+                <div class="">
+                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent submit-margin">
+                    Submit
+                  </button>
+                </div>
+              </form>
+            </div>
+          </section>
+        </div>
+
+        <footer class="mdl-mega-footer">
+          <div class="mdl-mega-footer--middle-section">
+            <div class="mdl-mega-footer--drop-down-section">
+              <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
+              <h1 class="mdl-mega-footer--heading">Features</h1>
+              <ul class="mdl-mega-footer--link-list">
+                <li><a href="#">About</a></li>
+                <li><a href="#">Terms</a></li>
+                <li><a href="#">Partners</a></li>
+                <li><a href="#">Updates</a></li>
+              </ul>
+            </div>
+
+            <div class="mdl-mega-footer--drop-down-section">
+              <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
+              <h1 class="mdl-mega-footer--heading">FAQ</h1>
+              <ul class="mdl-mega-footer--link-list">
+                <li><a href="#">Questions</a></li>
+                <li><a href="#">Answers</a></li>
+                <li><a href="#">Contact us</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="mdl-mega-footer--bottom-section">
+            <div class="mdl-logo">
+              More Information
+            </div>
+            <ul class="mdl-mega-footer--link-list">
+              <li><a href="#">Help</a></li>
+              <li><a href="#">Privacy and Terms</a></li>
+            </ul>
+          </div>
+        </footer>
+      </main>
+    </div>
+
+    <script src="mdl/material.min.js"></script>
+    <!-- build:js(app/) ../../scripts/main.min.js -->
+    <script src="scripts/main.js"></script>
+    <!-- endbuild -->
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-XXXXX-X', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <!-- Built with love using Web Starter Kit -->
+  </body>
+</html>

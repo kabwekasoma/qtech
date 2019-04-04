@@ -1,0 +1,11 @@
+body {
+	background-image: url("../images/piggy-bank.jpg");
+}
+
+/* Margins */
+.bottom-margin-two{
+	margin-bottom: 2em;
+}
+.top-margin-two{
+	margin-top: 2em;
+}
